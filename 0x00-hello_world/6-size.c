@@ -5,11 +5,11 @@
  */
 int mani(void)
 {
-	chara=sizeof(char);
-	inti=sizeof(int);
-	long_int=sizeof(long int);
-	long_long=sizeof(long long int);
-	float_s=sizeof(float);
+	int chara=sizeof(char);
+	int inti=sizeof(int);
+	int long_int=sizeof(long int);
+	int long_long=sizeof(long long int);
+	int float_s=sizeof(float);
 	printf("Size of a char: ",chara," byte(s)\n");
 	printf("Size of a int: ",inti," byte(s)\n");
 	printf("Size of a long int: ",Long_int," byte(s)\n");
