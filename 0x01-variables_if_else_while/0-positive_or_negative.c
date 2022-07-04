@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main - "check intigers"
+ * main - check intigers
  * return: Always (0)
  */
 int main(void)
