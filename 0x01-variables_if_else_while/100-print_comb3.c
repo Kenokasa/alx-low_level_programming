@@ -15,11 +15,15 @@ int main(void)
 	{
 		putchar((d / 10) + '0');
 		putchar((d % 10) + '0');
-	}
+		if (d / 10 == d % 10)
+		{
+		continue ;
+		}
 		if (d != 99)
 	{
 		putchar(',');
 		putchar(' ');
+	}
 	}
 	putchar('\n');
 	return (0);
