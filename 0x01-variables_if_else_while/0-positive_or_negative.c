@@ -3,6 +3,7 @@
 #include <stdio.h>
 /**
  * main - check intigers
+ *
  * return: Always (0)
  */
 int main(void)
