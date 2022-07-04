@@ -15,6 +15,6 @@ int main(void)
 		putchar(low);
 
 	}
-	printf("\n")
+	printf("\n");
 		return (0);
 }
