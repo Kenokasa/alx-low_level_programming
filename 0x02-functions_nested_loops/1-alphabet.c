@@ -4,7 +4,7 @@
  *
  * Description: Prints the alphabet with _putchar
  *
- * Return: Always (0)
+ * Return: void
  */
 
 void print_alphabet(void)
@@ -16,4 +16,5 @@ void print_alphabet(void)
 		_putchar(c);
 		c++;
 	}
+	_putchar('\n');
 }
