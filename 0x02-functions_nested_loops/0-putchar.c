@@ -12,10 +12,11 @@ int main(void)
 	char c;
 	char k[] = "_putchar\n";
 
-	for (i=0; i=8 ; i++)
+	while (i<9) 
 	{
 		c = k[i];
 		_putchar(c);
+		i++;
 	}
 
 	return (0);
