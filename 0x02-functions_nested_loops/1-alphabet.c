@@ -2,7 +2,7 @@
 /**
  * main - check alphabet
  *
- * Description: Prints the alphabet with _putchar
+ * description: Prints the alphabet with _putchar
  *
  * Return: void
  */
