@@ -1,6 +1,7 @@
 #include "main.h"
 
-/* print_sign - checks for integer sign
+/**
+ * print_sign - checks for integer sign
  *
  * @n: integer to check
  *
