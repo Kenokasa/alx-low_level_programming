@@ -13,4 +13,4 @@ int main(void)
 	positive_or_negative(i);
 
 	return (0);
-}
+sh: 1: q: not found
