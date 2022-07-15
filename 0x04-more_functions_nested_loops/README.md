@@ -38,4 +38,4 @@ mandatory
 Write a function that prints a triangle, followed by a new line.
 11. The problem of distinguishing prime numbers from composite numbers and of resolving the latter into their prime factors is known to be one of the most important and useful in arithmetic
 12. Numbers have life; they're not just symbols on paper
-
+ff
