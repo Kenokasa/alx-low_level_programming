@@ -1,0 +1,242 @@
+TIME(1POSIX)                POSIX Programmer's Manual                TIME(1POSIX)
+
+PPRROOLLOOGG
+       This  manual page is part of the POSIX Programmer's Manual.  The Linux im‐
+       plementation of this interface may differ (consult the corresponding Linux
+       manual  page  for  details of Linux behavior), or the interface may not be
+       implemented on Linux.
+
+NNAAMMEE
+       time — time a simple command
+
+SSYYNNOOPPSSIISS
+       time [[−p]] _u_t_i_l_i_t_y [[_a_r_g_u_m_e_n_t...]]
+
+DDEESSCCRRIIPPTTIIOONN
+       The _t_i_m_e utility shall invoke the utility named  by  the  _u_t_i_l_i_t_y  operand
+       with  arguments  supplied  as the _a_r_g_u_m_e_n_t operands and write a message to
+       standard error that lists timing statistics for the utility.  The  message
+       shall include the following information:
+
+        *  The elapsed (real) time between invocation of _u_t_i_l_i_t_y and its termina‐
+           tion.
+
+        *  The User CPU time, equivalent to the sum of the _t_m_s___u_t_i_m_e and  _t_m_s___c_u_‐
+           _t_i_m_e fields returned by the _t_i_m_e_s() function defined in the System In‐
+           terfaces volume of POSIX.1‐2008 for the process in  which  _u_t_i_l_i_t_y  is
+           executed.
+
+        *  The  System  CPU  time,  equivalent  to  the  sum of the _t_m_s___s_t_i_m_e and
+           _t_m_s___c_s_t_i_m_e fields returned by the _t_i_m_e_s() function for the process  in
+           which _u_t_i_l_i_t_y is executed.
+
+       The  precision of the timing shall be no less than the granularity defined
+       for the size of the clock tick unit on the system, but the  results  shall
+       be  reported  in  terms of standard time units (for example, 0.02 seconds,
+       00:00:00.02, 1m33.75s, 365.21 seconds), not numbers of clock ticks.
+
+       When _t_i_m_e is used as part of a pipeline, the times reported  are  unspeci‐
+       fied,  except  when  it is the sole command within a grouping command (see
+       _S_e_c_t_i_o_n _2_._9_._4_._1, _G_r_o_u_p_i_n_g _C_o_m_m_a_n_d_s) in that  pipeline.  For  example,  the
+       commands  on the left are unspecified; those on the right report on utili‐
+       ties aa and cc, respectively:
+
+           ttiimmee aa || bb || cc    {{ ttiimmee aa;; }} || bb || cc
+           aa || bb || ttiimmee cc    aa || bb || ((ttiimmee cc))
+
+OOPPTTIIOONNSS
+       The  _t_i_m_e  utility  shall  conform  to  the  Base  Definitions  volume  of
+       POSIX.1‐2008, _S_e_c_t_i_o_n _1_2_._2, _U_t_i_l_i_t_y _S_y_n_t_a_x _G_u_i_d_e_l_i_n_e_s.
+
+       The following option shall be supported:
+
+       −−pp        Write the timing output to standard error in the format shown in
+                 the STDERR section.
+
+OOPPEERRAANNDDSS
+       The following operands shall be supported:
+
+       _u_t_i_l_i_t_y   The name of a utility that is to be invoked. If the _u_t_i_l_i_t_y  op‐
+                 erand  names  any  of  the special built-in utilities in _S_e_c_t_i_o_n
+                 _2_._1_4, _S_p_e_c_i_a_l _B_u_i_l_t_-_I_n _U_t_i_l_i_t_i_e_s, the results are undefined.
+
+       _a_r_g_u_m_e_n_t  Any string to be supplied as an argument when invoking the util‐
+                 ity named by the _u_t_i_l_i_t_y operand.
+
+SSTTDDIINN
+       Not used.
+
+IINNPPUUTT FFIILLEESS
+       None.
+
+EENNVVIIRROONNMMEENNTT VVAARRIIAABBLLEESS
+       The following environment variables shall affect the execution of _t_i_m_e:
+
+       _L_A_N_G      Provide  a  default value for the internationalization variables
+                 that are unset or null. (See  the  Base  Definitions  volume  of
+                 POSIX.1‐2008,  _S_e_c_t_i_o_n  _8_._2,  _I_n_t_e_r_n_a_t_i_o_n_a_l_i_z_a_t_i_o_n _V_a_r_i_a_b_l_e_s for
+                 the precedence of internationalization variables used to  deter‐
+                 mine the values of locale categories.)
+
+       _L_C___A_L_L    If  set  to a non-empty string value, override the values of all
+                 the other internationalization variables.
+
+       _L_C___C_T_Y_P_E  Determine the locale for  the  interpretation  of  sequences  of
+                 bytes  of  text  data as characters (for example, single-byte as
+                 opposed to multi-byte characters in arguments).
+
+       _L_C___M_E_S_S_A_G_E_S
+                 Determine the locale that should be used to  affect  the  format
+                 and  contents  of diagnostic and informative messages written to
+                 standard error.
+
+       _L_C___N_U_M_E_R_I_C
+                 Determine the locale for numeric formatting.
+
+       _N_L_S_P_A_T_H   Determine the location of message catalogs for the processing of
+                 _L_C___M_E_S_S_A_G_E_S.
+
+       _P_A_T_H      Determine the search path that shall be used to locate the util‐
+                 ity  to  be  invoked;  see  the  Base  Definitions   volume   of
+                 POSIX.1‐2008, _C_h_a_p_t_e_r _8, _E_n_v_i_r_o_n_m_e_n_t _V_a_r_i_a_b_l_e_s.
+
+AASSYYNNCCHHRROONNOOUUSS EEVVEENNTTSS
+       Default.
+
+SSTTDDOOUUTT
+       Not used.
+
+SSTTDDEERRRR
+       The  standard error shall be used to write the timing statistics. If −−pp is
+       specified, the following format shall be used in the POSIX locale:
+
+           ""rreeaall %%ff\\nnuusseerr %%ff\\nnssyyss %%ff\\nn"",, <<_r_e_a_l _s_e_c_o_n_d_s>, <_u_s_e_r _s_e_c_o_n_d_s>,
+               <_s_y_s_t_e_m _s_e_c_o_n_d_s>
+
+       where each floating-point number shall be expressed in seconds. The preci‐
+       sion used may be less than the default six digits of %%ff, but shall be suf‐
+       ficiently precise to accommodate the size of the clock tick on the  system
+       (for example, if there were 60 clock ticks per second, at least two digits
+       shall follow the radix character). The  number  of  digits  following  the
+       radix  character shall be no less than one, even if this always results in
+       a trailing zero. The implementation may append white space and  additional
+       information  following  the format shown here. The implementation may also
+       prepend a single empty line before the format shown here.
+
+OOUUTTPPUUTT FFIILLEESS
+       None.
+
+EEXXTTEENNDDEEDD DDEESSCCRRIIPPTTIIOONN
+       None.
+
+EEXXIITT SSTTAATTUUSS
+       If the _u_t_i_l_i_t_y utility is invoked, the exit status of _t_i_m_e  shall  be  the
+       exit status of _u_t_i_l_i_t_y; otherwise, the _t_i_m_e utility shall exit with one of
+       the following values:
+
+       1‐125   An error occurred in the _t_i_m_e utility.
+
+         126   The utility specified by _u_t_i_l_i_t_y was found but could  not  be  in‐
+               voked.
+
+         127   The utility specified by _u_t_i_l_i_t_y could not be found.
+
+CCOONNSSEEQQUUEENNCCEESS OOFF EERRRROORRSS
+       Default.
+
+       _T_h_e _f_o_l_l_o_w_i_n_g _s_e_c_t_i_o_n_s _a_r_e _i_n_f_o_r_m_a_t_i_v_e_.
+
+AAPPPPLLIICCAATTIIOONN UUSSAAGGEE
+       The  _c_o_m_m_a_n_d, _e_n_v, _n_i_c_e, _n_o_h_u_p, _t_i_m_e, and _x_a_r_g_s utilities have been speci‐
+       fied to use exit code 127 if an error occurs so that applications can dis‐
+       tinguish  ``failure to find a utility'' from ``invoked utility exited with
+       an error indication''. The value 127 was chosen because it is not commonly
+       used  for other meanings; most utilities use small values for ``normal er‐
+       ror conditions'' and the values above 128 can be confused with termination
+       due  to  receipt of a signal. The value 126 was chosen in a similar manner
+       to indicate that the utility could be found, but not invoked. Some scripts
+       produce  meaningful  error messages differentiating the 126 and 127 cases.
+       The distinction between exit codes 126 and 127 is based on KornShell prac‐
+       tice  that  uses  127  when  all  attempts  to  _e_x_e_c the utility fail with
+       [[EENNOOEENNTT]], and uses 126 when any attempt to _e_x_e_c the utility fails for  any
+       other reason.
+
+EEXXAAMMPPLLEESS
+       It  is  frequently  desirable  to apply _t_i_m_e to pipelines or lists of com‐
+       mands. This can be done by placing pipelines and command lists in a single
+       file;  this file can then be invoked as a utility, and the _t_i_m_e applies to
+       everything in the file.
+
+       Alternatively, the following command can be used to apply _t_i_m_e to  a  com‐
+       plex command:
+
+           ttiimmee sshh −−cc ''_c_o_m_p_l_e_x_-_c_o_m_m_a_n_d_-_l_i_n_e''
+
+RRAATTIIOONNAALLEE
+       When  the  _t_i_m_e  utility  was  originally  proposed  to be included in the
+       ISO POSIX‐2:1993 standard, questions were raised about its suitability for
+       inclusion  on  the  grounds that it was not useful for conforming applica‐
+       tions, specifically:
+
+        *  The underlying CPU definitions from the System  Interfaces  volume  of
+           POSIX.1‐2008  are  vague,  so the numeric output could not be compared
+           accurately between systems or even between invocations.
+
+        *  The creation of portable benchmark programs was outside the scope this
+           volume of POSIX.1‐2008.
+
+       However,  _t_i_m_e  does fit in the scope of user portability. Human judgement
+       can be applied to the analysis of the output, and it could be very  useful
+       in  hands-on debugging of applications or in providing subjective measures
+       of system performance. Hence it  has  been  included  in  this  volume  of
+       POSIX.1‐2008.
+
+       The default output format has been left unspecified because historical im‐
+       plementations differ greatly in their style of depicting this numeric out‐
+       put.  The −−pp option was invented to provide scripts with a common means of
+       obtaining this information.
+
+       In the KornShell, _t_i_m_e is a shell reserved word that can be used  to  time
+       an  entire  pipeline, rather than just a simple command. The POSIX defini‐
+       tion has been worded to allow this implementation. Consideration was given
+       to  invalidating  this approach because of the historical model from the C
+       shell and System V shell. However, since the System V _t_i_m_e utility histor‐
+       ically  has  not produced accurate results in pipeline timing (because the
+       constituent processes are not all owned by the same parent process, as al‐
+       lowed  by POSIX), it did not seem worthwhile to break historical KornShell
+       usage.
+
+       The term _u_t_i_l_i_t_y is used, rather than _c_o_m_m_a_n_d, to highlight the fact  that
+       shell  compound  commands, pipelines, special built-ins, and so on, cannot
+       be used directly.  However, _u_t_i_l_i_t_y includes user application programs and
+       shell scripts, not just the standard utilities.
+
+FFUUTTUURREE DDIIRREECCTTIIOONNSS
+       None.
+
+SSEEEE AALLSSOO
+       _C_h_a_p_t_e_r _2, _S_h_e_l_l _C_o_m_m_a_n_d _L_a_n_g_u_a_g_e, _s_h
+
+       The  Base Definitions volume of POSIX.1‐2008, _C_h_a_p_t_e_r _8, _E_n_v_i_r_o_n_m_e_n_t _V_a_r_i_‐
+       _a_b_l_e_s, _S_e_c_t_i_o_n _1_2_._2, _U_t_i_l_i_t_y _S_y_n_t_a_x _G_u_i_d_e_l_i_n_e_s
+
+       The System Interfaces volume of POSIX.1‐2008, _t_i_m_e_s()
+
+CCOOPPYYRRIIGGHHTT
+       Portions of this text are reprinted and reproduced in electronic form from
+       IEEE Std 1003.1, 2013 Edition, Standard for Information Technology -- Por‐
+       table Operating System Interface (POSIX), The Open Group  Base  Specifica‐
+       tions Issue 7, Copyright (C) 2013 by the Institute of Electrical and Elec‐
+       tronics Engineers, Inc and The Open Group.  (This is POSIX.1-2008 with the
+       2013 Technical Corrigendum 1 applied.) In the event of any discrepancy be‐
+       tween this version and the original IEEE and The Open Group Standard,  the
+       original  IEEE  and  The  Open Group Standard is the referee document. The
+       original  Standard  can  be  obtained  online  at  http://www.unix.org/on‐
+       line.html .
+
+       Any  typographical  or formatting errors that appear in this page are most
+       likely to have been introduced during the conversion of the  source  files
+       to   man   page  format.  To  report  such  errors,  see  https://www.ker‐
+       nel.org/doc/man-pages/reporting_bugs.html .
+
+IEEE/The Open Group                    2013                          TIME(1POSIX)
